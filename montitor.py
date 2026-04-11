@@ -11,7 +11,6 @@ def show_processes():
         subprocess.run("ps aux --sort=-%mem | head", shell=True)
     except Exception as e:
         print("Error showing processes:", e)
-
 def kill_process():
     try:
         pid = input("Enter PID to kill: ")
