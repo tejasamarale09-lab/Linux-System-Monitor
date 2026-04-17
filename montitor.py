@@ -1,6 +1,14 @@
 import os
 import subprocess
 import time
+import datetime
+
+def write_log(message):
+     now=datetime.datetime.now()
+     timestamp=now.strftime("%Y-%m-%d %H:%M%S")
+
+     with open("log.txt","a") as f:
+        f.write(f"[{timestamp}] {message}/n")
 
 def clear_screen():
     os.system("clear")
@@ -27,8 +35,11 @@ def kill_process():
         subprocess.run(["kill", pid])
         print("Process termination attempted.")
 
+        write_log(f"User tried to kill PID {pid}")
+
     except Exception as e:
         print("Error killing process:", e)
+        write_log(f"Error killing process {e}")
 
 def show_memory():
     try:
@@ -59,6 +70,9 @@ def auto_refresh():
         print("\nExited auto refresh mode.")
     except Exception as e:
         print("Error in auto refresh:", e)
+def disk_usage():
+    print("/n---Disk Usage---/n")
+    subprocess.run(["df","-h"])
 
 def main():
     while True:
@@ -69,6 +83,7 @@ def main():
         print("3. Show Memory Usage")
         print("4. Show CPU Usage")
         print("5. Auto Refresh Mode")
+        print("6. Show Disk Usage")
         print("0. Exit")
 
         choice = input("Enter your choice: ")
@@ -83,6 +98,8 @@ def main():
             show_cpu()
         elif choice == "5":
             auto_refresh()
+        elif choice =="6":
+            disk_usage()
         elif choice == "0":
             print("Exiting...")
             break
@@ -94,6 +111,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-
-    
+   
