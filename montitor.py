@@ -5,10 +5,10 @@ import datetime
 
 def write_log(message):
      now=datetime.datetime.now()
-     timestamp=now.strftime("%Y-%m-%d %H:%M%S")
+     timestamp=now.strftime("%Y-%m-%d %H:%M:%S")
 
      with open("log.txt","a") as f:
-        f.write(f"[{timestamp}] {message}/n")
+        f.write(f"[{timestamp}] {message}\n")
 
 def clear_screen():
     os.system("clear")
@@ -59,7 +59,7 @@ def auto_refresh():
     try:
         while True:
             clear_screen()
-            print("=== AUTO REFRESH MODE (Ctrl+C to exit) ===\n")
+            print("=== AUTO REFRESH MODE (Ctrl+C to exit) ===/n")
 
             subprocess.run(["free", "-h"])
             subprocess.run("top -bn1 | grep 'Cpu'", shell=True)
@@ -71,7 +71,7 @@ def auto_refresh():
     except Exception as e:
         print("Error in auto refresh:", e)
 def disk_usage():
-    print("/n---Disk Usage---/n")
+    print("/n ---Disk Usage--- /n")
     subprocess.run(["df","-h"])
 
 def main():
@@ -106,7 +106,7 @@ def main():
         else:
             print("Invalid choice.")
 
-        input("\nPress Enter to continue...")
+        input("\n Press Enter to continue...")
 
 if __name__ == "__main__":
     main()
