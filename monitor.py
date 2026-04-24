@@ -1,14 +1,13 @@
 import os
 import subprocess
-import time
 import datetime
-
+import psutil
 def write_log(message):
      now=datetime.datetime.now()
      timestamp=now.strftime("%Y-%m-%d %H:%M:%S")
 
      with open("log.txt","a") as f:
-        f.write(f"[{timestamp}] {message}\n")
+               f.write(f"[{timestamp}] {message}\n")
 
 def clear_screen():
     os.system("clear")
@@ -43,11 +42,15 @@ def kill_process():
 
 def show_memory():
     try:
+        mem=psutil.virtual_memory()
         print("\n--- Memory Usage ---\n")
-        subprocess.run(["free", "-h"])
+        print(f"Total:  {mem.total // (1024**3)} GB")
+        print(f"Used:  {mem.used // (1024**3)} GB")
+        print(f"Available: {mem.available // (1024**3)} GB")
+        print(f"Usage: {mem.percent}%")
+        write_log("\nuser viewed memory usage")
     except Exception as e:
         print("Error showing memory:", e)
-
 def show_cpu():
     try:
         print("\n--- CPU Usage ---\n")
@@ -111,4 +114,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-   
+  
