@@ -13,6 +13,7 @@ This project helps users view system processes, memory usage, CPU usage, and man
 -  Display CPU usage
 -  Auto-refresh mode (updates every few seconds)
 -  Input validation and error handling
+-  adds the info (date,time) about operations in a log file
 
 ---
 
@@ -23,6 +24,8 @@ This project helps users view system processes, memory usage, CPU usage, and man
 - subprocess module
 - os module
 - time module
+- datetime module
+- psutil module
 
 ---
 
