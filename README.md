@@ -50,6 +50,10 @@ python3 monitor.py
 5. Auto Refresh Mode
 0. Exit
 
+1) Terminal look when the script runs
+
+<img width="1080" height="2384" alt="image" src="https://github.com/user-attachments/assets/d98111a6-f61f-4d87-9c58-3de494a0f8ae" />
+
 
 Structure :
 linux-monitor/
